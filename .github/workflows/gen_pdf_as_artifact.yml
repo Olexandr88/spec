@@ -1,0 +1,29 @@
+name: Generate PDF as a artifact
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-full
+
+      - name: Build PDF
+        run: |
+          make
+
+      - name: Upload PDF Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: pdf-artifact
+          path: erlang-spec.pdf 
