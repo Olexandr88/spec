@@ -1,4 +1,4 @@
-name: Generate post script file
+name: Generate PDF and Release PS
 
 on:
   push:
@@ -18,6 +18,25 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y texlive-full
 
-      - name: Build PDF
+      - name: Build PDF and PS
         run: |
           make
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v1.0.0  # Update this to your desired versioning scheme
+          release_name: Release v1.0.0  # Update this as needed
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.ERLANG_SPEC_TOKEN }}
+
+      - name: Upload PS File
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v1.0.0  # Ensure this matches the tag used in the previous step
+          files: erlang-spec.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.ERLANG_SPEC_TOKEN }}
