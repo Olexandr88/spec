@@ -1,4 +1,4 @@
-name: Generate PDF and Release PS
+name: Generate PDF and Release
 
 on:
   push:
