@@ -3,7 +3,7 @@ name: Generate post script file
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
