@@ -12,7 +12,7 @@ February 1999. We publish the source for the draft in the hope that we in
 collaboration with the Erlang community eventually will be able to produce
 an official Erlang Language Specification.
 
-[The original draft][] from 1999 is available in the download area at
+[The original draft][http://www.erlang.org/download/erl_spec47.ps.gz] from 1999 is available in the download area at
 erlang.org.
 
 Build the Document
